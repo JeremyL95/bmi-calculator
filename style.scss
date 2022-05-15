@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+$colors: (
+    primary: #17202a,
+    secondary: #354655,
+    texts: #fff,
+    cta: #1db954,
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+@mixin flexCenter($display, $justify, $align, $direction) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin formatting($width, $height, $bgColor) {
+    width: $width;
+    height: $height;
+    background-color: $bgColor;
+}
+
+@mixin borderSettings($border-radius) {
+    outline: none;
+    border: none;
+    border-radius: $border-radius;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "montserrat", san-serif;
+}
+
+body {
+    @include flexCenter(flex, center, center, column);
+    height: 100vh;
+}
+
+.container {
+    background-color: color(primary);
+    padding: 1em;
+    border-radius: 5px;
+    display: block;
+}
+
+header {
+    color: color(texts);
+    padding: 1em 0;
+    margin-bottom: 0.5em;
+}
+
+button,
+p {
+    color: color(texts);
+    letter-spacing: 2px;
+}
+
+button,
+#slider {
+    cursor: pointer;
+}
+
+.gender {
+    @include flexCenter(flex, space-between, center, row);
+
+    .btn-gender {
+        @include formatting(160px, 120px, lighten(color(secondary), 0.8));
+        @include borderSettings(5px);
+
+        .iconify {
+            margin-top: 1em;
+        }
+
+        &:hover {
+            background-color: darken(color(secondary), 0.1);
+        }
+    }
+}
+
+.height-input {
+    @include formatting(330px, 150px, lighten(color(secondary), 0.8));
+    @include flexCenter(flex, center, center, column);
+    padding: 1em;
+    margin: 1em auto;
+    border-radius: 5px;
+
+    .slider {
+        -webkit-appearance: none;
+        @include formatting(100%, 5px, color(texts));
+        outline: none;
+        opacity: 0.5;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            @include formatting(20px, 20px, color(cta));
+            @include borderSettings(50%);
+        }
+
+        &::-moz-range-thumb {
+            @include formatting(20px, 20px, color(cta));
+            @include borderSettings(50%);
+        }
+    }
+}
+
+.details-input {
+    @include flexCenter(flex, space-between, center, row);
+
+    .card {
+        @include formatting(160px, 160px, lighten(color(secondary), 0.8));
+        padding: 1.5em;
+        border-radius: 5px;
+        text-align: center;
+
+        .btn {
+            @include formatting(30px, 30px, lighten(color(primary), 0.5));
+            @include borderSettings(50%);
+            font-weight: 700;
+            font-size: 1em;
+        }
+    }
+}
+
+.height,
+.weight,
+.age {
+    margin: 1em 0;
+    font-size: 1.5em;
+}
+
+.units {
+    margin-left: 0.5em;
+    font-size: 0.5em;
+}
+
+#btn-calculate {
+    @include formatting(100%, 5%, color(cta));
+    @include borderSettings(5px);
+    opacity: 0.5;
+    padding: 1em;
+    margin-top: 1em;
+
+    &:hover {
+        background-color: darken(color(cta), 0.1);
+    }
+}
+
+.result-container {
+    @include formatting(360px, 600px, color(primary));
+    border-radius: 5px;
+    padding: 1em;
+    color: color(texts);
+    display: none;
+
+    .fa-arrow-left {
+        margin-right: 1em;
+        cursor: pointer;
+    }
+
+    .result-card {
+        @include formatting(330px, 380px, lighten(color(secondary), 0.8));
+        border-radius: 5px;
+        padding: 2em;
+        text-align: center;
+
+        #status {
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        #result {
+            font-size: 3em;
+            font-weight: 700;
+            margin: 1em 0;
+        }
+
+        #range {
+            color: lighten(color(texts), 0.9);
+        }
+
+        p {
+            font-size: 0.75em;
+            margin: 0.5em 0 4em 0;
+        }
+    }
+}

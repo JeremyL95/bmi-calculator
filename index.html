@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="icon" href="icon/bmi.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>BMI Calculator</header>
+        <div id="calculator">
+            <div class="gender">
+                <button class="btn-gender male">
+                    <p>Male</p>
+                    <span class="iconify" data-icon="emojione:boy-medium-light-skin-tone" data-width="36"
+                        data-height="36"></span>
+                </button>
+                <button class="btn-gender female">
+                    <p>Female</p>
+                    <span class="iconify" data-icon="emojione:girl-medium-light-skin-tone" data-width="36"
+                        data-height="36"></span>
+                </button>
+            </div>
+            <div class="height-input">
+                <p>Height</p>
+                <p class="height">150<span class="units">cm</span></p>
+                <input type="range" min="130" max="230" value="150" class="slider" id="slider">
+            </div>
+            <div class="details-input">
+                <div class="card">
+                    <p>Weight</p>
+                    <p class="weight">50 <span class="units">kg</span></p>
+                    <button class="btn btnWeightDecrease">-</button>
+                    <button class="btn btnWeightIncrease">+</button>
+                </div>
+                <div class="card">
+                    <p>Age</p>
+                    <p class="age">20</p>
+                    <button class="btn btnAgeDecrease">-</button>
+                    <button class="btn btnAgeIncrease">+</button>
+                </div>
+            </div>
+            <button type="submit" id="btn-calculate">Calculate</button>
+        </div>
+    </div>
+
+    <div class="result-container">
+        <header><i class="fas fa-arrow-left" id="btn-back"></i>Your BMI result</header>
+        <div class="result-card">
+            <div id="status">Overweight</div>
+            <div id="result">28.1</div>
+            <div id="range">Healthy BMI range:</div>
+            <p>18.5 kg/m<sup>2</sup> - 25 kg/m<sup>2</sup></p>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
